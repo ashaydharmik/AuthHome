@@ -23,7 +23,13 @@ const userSchema = new mongoose.Schema(
     checkbox: {
       type: Boolean,
       default: false 
-    }
+    },
+    profilePicture: {
+      type: String, 
+    },
+    location: {
+      type: String,
+    },
   },
   {
     timestamps: true,

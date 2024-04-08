@@ -7,12 +7,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [showRegister, setShowRegister] = useState(true);
   const navigate = useNavigate();
-  const auth = JSON.parse(localStorage.getItem("user")) || { token: null };
-  const userToken = auth.token;
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
-  };
+ 
 
   const showLoginForm = () => {
     setShowRegister(false);

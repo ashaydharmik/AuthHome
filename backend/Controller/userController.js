@@ -64,7 +64,7 @@ const loginUser = asyncHandler(async (req, res) => {
   if (user && (await bcrypt.compare(password, user.password))) {
     const token = jwt.sign(
       {
-        id: user.id,
+        _id: user._id,
         email: user.email,
         password: user.password,
         name: user.name,
@@ -74,7 +74,7 @@ const loginUser = asyncHandler(async (req, res) => {
     );
     res.status(201).json({
       message: "User Successfully logIn",
-      id: user.id,
+      _id: user._id,
       userName: user.name,
       token,
     });
@@ -108,4 +108,39 @@ const currentUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, loginUser, currentUser };
+
+const setUserInfo = asyncHandler(async (req, res) => {
+  const { profilePicture, location } = req.body;
+  const {_id} = req.params;
+
+  if (!profilePicture && !location) {
+    res.status(400).json({ message: 'Please provide profile picture or location to update' });
+    return;
+  }
+
+  let user = await User.findById(_id);
+
+  if (!user) {
+    console.error("User not found in the database.");
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  // Update user's profile information
+  if (profilePicture) {
+    user.profilePicture = profilePicture;
+  }
+  if (location) {
+    user.location = location;
+  }
+
+  // Save the updated user
+  await user.save();
+
+  res.json({ message: 'Profile updated successfully', user: user });
+});
+
+
+
+
+module.exports = { registerUser, loginUser, currentUser, setUserInfo };

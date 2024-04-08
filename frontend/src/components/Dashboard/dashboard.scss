@@ -74,6 +74,7 @@
         p{
           font-size: 18px;
           font-weight: bold;
+         
         }
         p:last-child{
           width: 100px;
@@ -82,13 +83,22 @@
           border: 3px dotted #b4b4b4;
           margin-left: 0px;
           margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+       
+          img{
+            border-radius: 50%;
+            display: block;
+        
+          }
           @include md{
             margin-left: 10px;
           }
           svg{
            position: relative;
-           top: 50%;
-           left: 50%;
+           top: 10%;
+    left: 10%;
            transform: translate(-50%, -50%);
            color: #7E7D86;
            cursor: pointer;
@@ -112,6 +122,13 @@
             padding-right: 5px;
           }
         }
+        button{
+          padding: 5px 10px;
+          border: 1px solid #c6c6c6;
+          background-color: white;
+          border-radius: 5px;
+          cursor: pointer;
+        }
       }
     }
     .location{
@@ -127,6 +144,9 @@
         width: 100%;
         margin-top: 1.5rem;
         padding-bottom: 7px;
+        padding-top: 5px;
+    padding-left: 5px;
+    outline: none;
         &::placeholder{
           color: #aeaeae;
         }
@@ -136,10 +156,11 @@
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       margin-top: 2.5rem;
+      flex-direction: column;
       button {
-        width: 30%;
+        width: 50%;
         background: #EA4B8B;
         border-radius: 6px;
         font-size: 14px;
@@ -148,6 +169,22 @@
         height: 1.7rem;
         border: none;
         cursor: pointer;
+        @include md{
+          width: 30%;
+        }
+        &.disabled {
+          background-color: #F8B8D0; 
+        }
+      }
+      p{
+        margin-left: 30px;
+        font-size: 10px;
+        margin-top: 10px;
+        color: #919191;
+        @include md{
+          margin-left: 30px;
+          font-size: 12px;
+        }
       }
     }
   }
