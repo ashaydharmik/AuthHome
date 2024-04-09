@@ -1,0 +1,39 @@
+@import "../../css-config/mixins.scss";
+
+.content-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 4rem;
+    padding: 0 15px;
+    @include md{
+        padding: 0;  
+    }
+    h1{
+        font-size: 1.5rem;
+    }
+    img{
+        width: 125px;
+        height: 90px;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    p{
+        margin-bottom: .8rem;
+        font-weight: 600;
+        font-size: 14px;
+        color: #807f7f;
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+        span{
+            color: #EA4B8A;
+        }
+    }
+    #mail{
+        font-weight: bold;
+        color: black;
+    }
+   
+}

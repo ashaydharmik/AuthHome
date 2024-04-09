@@ -30,6 +30,13 @@ const userSchema = new mongoose.Schema(
     location: {
       type: String,
     },
+    lookingFor: {
+      type: [{
+        type: String,
+        enum: ["work", "hire", "inspiration"]
+      }],
+      default: [],
+    },
   },
   {
     timestamps: true,

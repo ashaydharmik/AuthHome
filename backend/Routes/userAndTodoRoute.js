@@ -3,7 +3,7 @@ const express = require("express");
 const {
   registerUser,
   loginUser,
-  currentUser,setUserInfo
+  currentUser,setUserInfo, setUserCareer
 } = require("../Controller/userController");
 
 const errorHandler = require("../Middleware/errorHandler");
@@ -17,9 +17,11 @@ router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-router.get("/currentUser", token, currentUser);
+router.get("/currentUser/:_id", token, currentUser);
 
-router.put("/update/:_id",token, setUserInfo)
+router.put("/updateInfo/:_id",token, setUserInfo)
+
+router.put("/updateLookingFor/:_id",token, setUserCareer)
 
 
 router.use(errorHandler);

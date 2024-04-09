@@ -1,0 +1,197 @@
+@import "../../../css-config/mixins.scss";
+
+.navbar {
+  width: 100%;
+  height: 10%;
+  // background-color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e2e2e2;
+ 
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 0 10px;
+    width: 100%;
+    @include md{
+        width: 60%; 
+        justify-content: flex-start;
+        
+    }
+    .logo {
+      margin-left: 10px;
+      h1 {
+        font-weight: normal;
+        color: black;
+        font-family: "Pacifico";
+      }
+    }
+    .toggle-menu {
+        display: block;
+        border: none;
+    background: white;
+        @include md{
+            display: none;
+        } 
+        svg{
+            position: relative;
+            z-index: 1;
+        }
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ecececcc; 
+        z-index: 999; 
+        
+       
+      }
+    .nav-items1{
+        width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    ul{
+        list-style: none;
+    width: 80%;
+    text-align: center;
+    margin-top: 6rem;
+    li{
+        font-size: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+          color: #515151;
+          cursor: pointer;
+          &:hover {
+            color: rgb(94, 94, 94);
+            background-color: #c4c4c4;
+          }
+    }
+    }
+    }
+      .nav-items {
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: #ffffff; 
+        border-top: 1px solid #e2e2e2; 
+        @include md{
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            border: none;
+        }
+        
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        list-style: none;
+        
+        li {
+            font-size: 14px;
+          font-weight: 600;
+          font-family: Arial, Helvetica, sans-serif;
+          color: #818181;
+          cursor: pointer;
+          &:hover {
+            color: rgb(94, 94, 94);
+          }
+        }
+      }
+    }
+    &.show{
+        display: flex;
+        @include md{
+            display: none;
+        }
+    }
+  }
+  .wrapper-1 {
+    display: none;
+    width: 40%;
+    // background-color: #EA4B8B;
+   
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    @include md{
+        display: flex;
+    }
+    .search-bar {
+      input {
+        width: 100px;
+        height: 1.8rem;
+        border-radius: 5px;
+        // position: relative;
+        // border: 1px solid grey;
+        outline: none;
+        padding-left: 30px;
+        background-color: #f2f5f4;
+        border: none;
+      }
+      span {
+        position: relative;
+        left: 25px;
+        top: 4px;
+        svg {
+          color: #9b9ba3;
+        }
+      }
+    }
+    .profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      p {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid rgb(188, 188, 188);
+        background-image: url("../../../../assets/authimg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      span {
+        position: relative;
+        top: 3px;
+        svg {
+          font-size: 20px;
+          color: grey;
+        }
+      }
+    }
+    .btn-container {
+      // width: 100%;
+
+      button {
+        padding: 8px 15px;
+        background: #ea4b8b;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        // height: 1.9rem;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

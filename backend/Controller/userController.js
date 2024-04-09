@@ -87,25 +87,17 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //fetching current user
 const currentUser = asyncHandler(async (req, res) => {
-  try {
-    console.log("Decoded Token:", req.user);
-    const { name } = req.user;
+  const {_id} = req.params; // Get _id from request parameters
 
-    const user = await User.findOne({ name });
+  const user = await User.findById(_id);
 
-    if (!user) {
-      console.error("User not found in the database.");
-      res.status(404).json({ message: "User not found" });
-      return;
-    }
-
-    res.status(200).json({
-      userName: user.name,
-    }).message("User found");
-  } catch (error) {
-    console.error("Error fetching current user:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+  if (!user) {
+    res.status(404).json({ success: false, message: 'User not found' });
+    return;
   }
+
+  // Return the user data
+  res.status(200).json({ success: true, user });
 });
 
 
@@ -140,7 +132,36 @@ const setUserInfo = asyncHandler(async (req, res) => {
   res.json({ message: 'Profile updated successfully', user: user });
 });
 
+const setUserCareer = asyncHandler(async (req, res) => {
+  const { lookingFor } = req.body;
+  const {_id} = req.params;
+
+  if (!lookingFor) {
+    res.status(400).json({ message: 'Please select what you are looking for' });
+    return;
+  }
+
+  let user = await User.findById(_id);
+
+  if (!user) {
+    console.error("User not found in the database.");
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  // Update user's profile information
+  if (lookingFor) {
+    user.lookingFor = lookingFor;
+  }
+ 
+
+  // Save the updated user
+  await user.save();
+
+  res.json({ message: 'Profile updated successfully', user: user });
+});
 
 
 
-module.exports = { registerUser, loginUser, currentUser, setUserInfo };
+
+module.exports = { registerUser, loginUser, currentUser, setUserInfo, setUserCareer };

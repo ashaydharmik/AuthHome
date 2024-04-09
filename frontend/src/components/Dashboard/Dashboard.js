@@ -35,13 +35,13 @@ const {navigate} = useGlobal()
   const handleNextClick = () => {
     const auth = JSON.parse(localStorage.getItem("user")) || { token: null, id: null };
     const userToken = auth.token;
-    const userId = auth.id;
+    const userId = auth._id;
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${userToken}`,
     };
 
-    axios.put(`http://localhost:4000/update/${userId}`, {
+    axios.put(`http://localhost:4000/updateInfo/${userId}`, {
       profilePicture: profilePicture,
       location: location,
     }, { headers })
