@@ -17,18 +17,24 @@ const NextPage = () => {
     option3: false,
   });
 
-  const handleChange = (option) => {
-    setCheckedOptions((prevState) => ({
-      ...prevState,
-      [option]: !prevState[option],
-    }));
-    checkFormReady();
-  };
-  
   const checkFormReady = () => {
     const isSelected = Object.values(checkedOptions).some((value) => value);
     setIsReady(isSelected);
   };
+  
+  
+  const handleChange = (option) => {
+    setCheckedOptions((prevState) => ({
+      ...prevState,
+      [option]: !prevState[option],
+    }), () => {
+      checkFormReady(); // Update isReady state immediately after updating checkedOptions state
+    });
+    
+    setIsReady(true); // Set isReady to true whenever a checkbox is checked
+  };
+  
+  
 
   const handleFinish = () => {
     const auth = JSON.parse(localStorage.getItem('user')) || { token: null, _id: null }; 
