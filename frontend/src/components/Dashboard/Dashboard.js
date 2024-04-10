@@ -14,7 +14,7 @@ const {navigate} = useGlobal()
   const handleImageChange = (e) => {
     const imageUrl = URL.createObjectURL(e.target.files[0]);
     setProfilePicture(imageUrl);
-    checkFormReady(imageUrl, location); // Call checkFormReady with updated values
+    checkFormReady(imageUrl, location);
   };
 
   const checkFormReady = (profilePicture, location) => {

@@ -175,7 +175,9 @@
           @include md{
             width: 20%;
           }
-         
+          &.disabled {
+            background-color: #F8B8D0; 
+          }
         }
         p{
             width: 100%;

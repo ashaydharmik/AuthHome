@@ -10,6 +10,7 @@ import { useGlobal } from '../../Context/Context';
 
 const NextPage = () => {
   const { navigate } = useGlobal();
+  const [isReady, setIsReady] = useState(false); 
   const [checkedOptions, setCheckedOptions] = useState({
     option1: false,
     option2: false,
@@ -21,8 +22,13 @@ const NextPage = () => {
       ...prevState,
       [option]: !prevState[option],
     }));
+    checkFormReady();
   };
   
+  const checkFormReady = () => {
+    const isSelected = Object.values(checkedOptions).some((value) => value);
+    setIsReady(isSelected);
+  };
 
   const handleFinish = () => {
     const auth = JSON.parse(localStorage.getItem('user')) || { token: null, _id: null }; // Change userId to _id
@@ -100,7 +106,7 @@ const NextPage = () => {
             </div>
             <div className="btn-container">
               <p>Anything else? You can select multiple.</p>
-              <button onClick={handleFinish}>Finish</button>
+              <button onClick={handleFinish} disabled={!isReady} className={isReady ? '' : 'disabled'}>Finish</button>
               <span>or press RETURN</span>
             </div>
           </div>

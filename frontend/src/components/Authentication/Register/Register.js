@@ -30,6 +30,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (registerData.password.length < 6) {
+      setErrMsg("Password must be at least 6 characters long");
+      return;
+    }
     try {
       const response = await axios.post(
         "https://authhome.onrender.com/register",

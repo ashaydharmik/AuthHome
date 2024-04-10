@@ -5,22 +5,25 @@ const jwt = require("jsonwebtoken");
 
 //user registration
 const registerUser = asyncHandler(async (req, res) => {
-  const { name,username, email, password ,checkbox} = req.body;
+  const { name, username, email, password, checkbox } = req.body;
 
   if (!name || !email || !password || !username || !checkbox) {
     res.status(400).json({ message: "Please enter all the fields" });
     return;
   }
 
- 
+  if (password.length < 6) {
+    res.status(400).json({ message: "Password must be at least 6 characters long" });
+    return;
+  }
 
-  const availableEmail = await User.findOne({ email});
+  const availableEmail = await User.findOne({ email });
   if (availableEmail) {
     res.status(400).json({ message: "Email has already been taken" });
     return;
   }
 
-  const availableUsername = await User.findOne({username});
+  const availableUsername = await User.findOne({ username });
   if (availableUsername) {
     res.status(400).json({ message: "Username has already been taken" });
     return;
@@ -33,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    checkbox:true
+    checkbox: true
   });
 
   if (user) {
@@ -51,6 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "Invalid user data" });
   }
 });
+
 
 //user login
 const loginUser = asyncHandler(async (req, res) => {
