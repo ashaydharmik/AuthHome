@@ -32,7 +32,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/register",
+        "https://authhome.onrender.com/register",
         registerData
       );
 

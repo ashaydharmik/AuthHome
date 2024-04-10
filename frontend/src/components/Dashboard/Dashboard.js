@@ -41,7 +41,7 @@ const {navigate} = useGlobal()
       Authorization: `Bearer ${userToken}`,
     };
 
-    axios.put(`http://localhost:4000/updateInfo/${userId}`, {
+    axios.put(`https://authhome.onrender.com/updateInfo/${userId}`, {
       profilePicture: profilePicture,
       location: location,
     }, { headers })

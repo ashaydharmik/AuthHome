@@ -21,7 +21,7 @@ const {navigate} = useGlobal()
     };
 
     axios
-      .get(`http://localhost:4000/currentUser/${userId}`, { headers })
+      .get(`https://authhome.onrender.com/currentUser/${userId}`, { headers })
       .then((res) => {
         console.log(res.data.user);
         setUserData(res.data.user);

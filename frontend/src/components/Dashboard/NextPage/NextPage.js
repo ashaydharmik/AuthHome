@@ -44,7 +44,7 @@ const NextPage = () => {
     }
   
     axios
-      .put(`http://localhost:4000/updateLookingFor/${userId}`, {
+      .put(`https://authhome.onrender.com/updateLookingFor/${userId}`, {
         lookingFor: validOptions,
       }, { headers })
       .then((response) => {
