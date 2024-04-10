@@ -13,7 +13,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   if (password.length < 6) {
-    res.status(400).json({ message: "Password must be at least 6 characters long" });
+    res
+      .status(400)
+      .json({ message: "Password must be at least 6 characters long" });
     return;
   }
 
@@ -36,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    checkbox: true
+    checkbox: true,
   });
 
   if (user) {
@@ -55,10 +57,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 //user login
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password,   checkbox } = req.body;
+  const { email, password, checkbox } = req.body;
   if (!email || !password || !checkbox) {
     res.status(400);
     throw new Error("Please enter all the fields");
@@ -72,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
         email: user.email,
         password: user.password,
         name: user.name,
-        checkbox:true
+        checkbox: true,
       },
       process.env.ACCESS_KEY
     );
@@ -88,29 +89,30 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 //fetching current user
 const currentUser = asyncHandler(async (req, res) => {
-  const {_id} = req.params; // Get _id from request parameters
+  const { _id } = req.params;
 
   const user = await User.findById(_id);
 
   if (!user) {
-    res.status(404).json({ success: false, message: 'User not found' });
+    res.status(404).json({ success: false, message: "User not found" });
     return;
   }
 
-  // Return the user data
   res.status(200).json({ success: true, user });
 });
 
-
 const setUserInfo = asyncHandler(async (req, res) => {
   const { profilePicture, location } = req.body;
-  const {_id} = req.params;
+  const { _id } = req.params;
 
   if (!profilePicture && !location) {
-    res.status(400).json({ message: 'Please provide profile picture or location to update' });
+    res
+      .status(400)
+      .json({
+        message: "Please provide profile picture or location to update",
+      });
     return;
   }
 
@@ -122,7 +124,6 @@ const setUserInfo = asyncHandler(async (req, res) => {
     return;
   }
 
-  // Update user's profile information
   if (profilePicture) {
     user.profilePicture = profilePicture;
   }
@@ -130,18 +131,17 @@ const setUserInfo = asyncHandler(async (req, res) => {
     user.location = location;
   }
 
-  // Save the updated user
   await user.save();
 
-  res.json({ message: 'Profile updated successfully', user: user });
+  res.json({ message: "Profile updated successfully", user: user });
 });
 
 const setUserCareer = asyncHandler(async (req, res) => {
   const { lookingFor } = req.body;
-  const {_id} = req.params;
+  const { _id } = req.params;
 
   if (!lookingFor) {
-    res.status(400).json({ message: 'Please select what you are looking for' });
+    res.status(400).json({ message: "Please select what you are looking for" });
     return;
   }
 
@@ -153,19 +153,19 @@ const setUserCareer = asyncHandler(async (req, res) => {
     return;
   }
 
-  // Update user's profile information
   if (lookingFor) {
     user.lookingFor = lookingFor;
   }
- 
 
-  // Save the updated user
   await user.save();
 
-  res.json({ message: 'Profile updated successfully', user: user });
+  res.json({ message: "Profile updated successfully", user: user });
 });
 
-
-
-
-module.exports = { registerUser, loginUser, currentUser, setUserInfo, setUserCareer };
+module.exports = {
+  registerUser,
+  loginUser,
+  currentUser,
+  setUserInfo,
+  setUserCareer,
+};

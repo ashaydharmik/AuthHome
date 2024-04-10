@@ -28,7 +28,7 @@ const {navigate} = useGlobal()
   const handleLocationChange = (e) => {
     const newLocation = e.target.value;
     setLocation(newLocation);
-    checkFormReady(profilePicture, newLocation); // Call checkFormReady with updated values
+    checkFormReady(profilePicture, newLocation); 
   };
 
 

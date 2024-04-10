@@ -12,19 +12,19 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
-    checkbox: false 
+    checkbox: false,
   };
   const [registerData, setRegisterData] = useState(initialValue);
   const { setShowRegister } = useGlobal();
   const [showLogin, setShowLogin] = useState(false);
-  const [errMsg, setErrMsg] = useState("")
+  const [errMsg, setErrMsg] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setRegisterData({
       ...registerData,
-      [name]: newValue
+      [name]: newValue,
     });
   };
 
@@ -48,7 +48,7 @@ const Register = () => {
       }
     } catch (error) {
       console.log("Error during registration:", error);
-      setErrMsg(error)
+      setErrMsg(error);
 
       if (
         error.response &&
@@ -64,58 +64,68 @@ const Register = () => {
 
   return (
     <>
-     
- {showLogin ? (
+      {showLogin ? (
         <Login />
       ) : (
-      <section className="register-container">
-<h1 className="text">dribble</h1>
-        <div className="login-text">
-          <p>Already a member? <span onClick={() => setShowRegister(false)}>Sign In</span></p>
-        </div>
-        <div className="wrapper">
-        <div className="heading">
-            <h1>Sign up to Dribble</h1>
-            <p> {errMsg && <GoDotFill style={{ marginRight: '5px', position:"relative",
-          top:"1px", fontSize:"10px" }} />}
-  {errMsg && errMsg}</p>
+        <section className="register-container">
+          <h1 className="text">dribble</h1>
+          <div className="login-text">
+            <p>
+              Already a member?{" "}
+              <span onClick={() => setShowRegister(false)}>Sign In</span>
+            </p>
           </div>
-          <div className="form-container">
-          <form onSubmit={handleSubmit}>
-              <div className="info">
-                <p>
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    
-                    name="name"
-                    value={registerData.name}
-                    onChange={handleChange}
+          <div className="wrapper">
+            <div className="heading">
+              <h1>Sign up to Dribble</h1>
+              <p>
+                {" "}
+                {errMsg && (
+                  <GoDotFill
+                    style={{
+                      marginRight: "5px",
+                      position: "relative",
+                      top: "1px",
+                      fontSize: "10px",
+                    }}
                   />
-                </p>
-                <p>
-                <label>Username</label>
-                  <input
-                    type="text"
-                
-                    name="username"
-                    value={registerData.username}
-                    onChange={handleChange}
-                  />
-                </p>
+                )}
+                {errMsg && errMsg}
+              </p>
+            </div>
+            <div className="form-container">
+              <form onSubmit={handleSubmit}>
+                <div className="info">
+                  <p>
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={registerData.name}
+                      onChange={handleChange}
+                    />
+                  </p>
+                  <p>
+                    <label>Username</label>
+                    <input
+                      type="text"
+                      name="username"
+                      value={registerData.username}
+                      onChange={handleChange}
+                    />
+                  </p>
                 </div>
                 <p>
-                <label>Email</label>
+                  <label>Email</label>
                   <input
                     type="email"
-                  
                     name="email"
                     value={registerData.email}
                     onChange={handleChange}
                   />
                 </p>
                 <p>
-                <label>Password</label>
+                  <label>Password</label>
                   <input
                     type="password"
                     name="password"
@@ -125,21 +135,32 @@ const Register = () => {
                   />
                 </p>
                 <div className="checkbox">
-                  <input type="checkbox" name="checkbox" value={registerData.checkbox} onChange={handleChange} />
-                  <p>Creating an account means you're okay with our<span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings.</span></p>
-                  
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    value={registerData.checkbox}
+                    onChange={handleChange}
+                  />
+                  <p>
+                    Creating an account means you're okay with our
+                    <span>Terms of Service, Privacy Policy,</span> and our
+                    default <span>Notification Settings.</span>
+                  </p>
                 </div>
                 <div className="btn-container">
-                <button type="submit">Create Account</button>
-              </div>
-              <div className="note">
-                <p id="noted">This site is protected by reCAPTCHA and the Google <span>Privacy Policy </span>and <span>Terms of Service</span> apply</p>
-              </div>
-            </form>
+                  <button type="submit">Create Account</button>
+                </div>
+                <div className="note">
+                  <p id="noted">
+                    This site is protected by reCAPTCHA and the Google{" "}
+                    <span>Privacy Policy </span>and{" "}
+                    <span>Terms of Service</span> apply
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-       
-      </section>
+        </section>
       )}
       <Toaster
         toastOptions={{

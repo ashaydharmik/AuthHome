@@ -31,7 +31,7 @@ const NextPage = () => {
   };
 
   const handleFinish = () => {
-    const auth = JSON.parse(localStorage.getItem('user')) || { token: null, _id: null }; // Change userId to _id
+    const auth = JSON.parse(localStorage.getItem('user')) || { token: null, _id: null }; 
     const userToken = auth.token;
     const userId = auth._id;
     const headers = {
