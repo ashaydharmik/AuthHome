@@ -65,7 +65,7 @@ const Register = () => {
         <Login />
       ) : (
       <section className="register-container">
-
+<h1 className="text">dribble</h1>
         <div className="login-text">
           <p>Already a member? <span onClick={() => setShowRegister(false)}>Sign In</span></p>
         </div>
@@ -117,6 +117,7 @@ const Register = () => {
                     name="password"
                     value={registerData.password}
                     onChange={handleChange}
+                    placeholder="6 + characters"
                   />
                 </p>
                 <div className="checkbox">

@@ -3,39 +3,53 @@
 .register-container {
   width: 100%;
   height: 100vh;
- padding: 1rem;
- display: flex;
- justify-content: flex-start;
- align-items: center;
- flex-direction: column;
- background-color: #f4cfcfde;
- @include md{
-   background-color: rgb(255, 255, 255);
- }
-  .login-text{
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f4cfcfde;
+  @include md {
+    background-color: rgb(255, 255, 255);
+  }
+  .text{
+    display: none;
+    @include md{
+display: block;
+      position: absolute;
+      top: 3rem;
+      left: 4rem;
+      font-family: "Pacifico";
+      font-size: 20px;
+      letter-spacing: 2px;
+      font-weight: 300;
+      color: rgb(217, 145, 0);
+    }
+  }
+  .login-text {
     width: 100%;
     height: 5%;
     // background-color: #d0d0d0;
-    p{
+    p {
       text-align: right;
       font-size: 14px;
-      span{
+      span {
         color: #5439ed;
-         font-weight: bold;
-         cursor: pointer;
+        font-weight: bold;
+        cursor: pointer;
       }
     }
   }
-  .wrapper{
+  .wrapper {
     width: 90%;
     height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   @include md{
-    width: 60%;
-   }
+    @include md {
+      width: 60%;
+    }
     margin-top: 2rem;
     .heading {
       // background-color: #d0d0d0;
@@ -45,13 +59,13 @@
       flex-direction: column;
       height: 12%;
       width: 100%;
-      @include md{
+      @include md {
         height: 15%;
       }
       h1 {
         font-size: 1.5rem;
       }
-      p{
+      p {
         font-size: 14px;
         color: #d85f61;
         font-weight: bold;
@@ -78,11 +92,11 @@
             align-items: flex-start;
             margin-bottom: 15px;
             flex-direction: column;
-          width: 50%;
-           label{
-            font-weight: bold;
-            margin-bottom: 5px;
-           }
+            width: 50%;
+            label {
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
             input {
               padding-left: 10px;
               width: 100%;
@@ -90,9 +104,8 @@
               border-radius: 5px;
               height: 2rem;
               font-family: "open sans";
-              background-color: #F3F3F3;
+              background-color: #f3f3f3;
               color: black;
-              
             }
           }
         }
@@ -102,11 +115,11 @@
           align-items: flex-start;
           margin-bottom: 15px;
           flex-direction: column;
-        
-         label{
-          font-weight: bold;
-          margin-bottom: 5px;
-         }
+
+          label {
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
           input {
             padding-left: 10px;
             width: 100%;
@@ -114,12 +127,14 @@
             border-radius: 5px;
             height: 2rem;
             font-family: "open sans";
-            background-color: #F3F3F3;
+            background-color: #f3f3f3;
             color: black;
-            
+            &::placeholder{
+              color: #a8a8a8;
+            }
           }
         }
-        .checkbox{
+        .checkbox {
           display: flex;
           width: 100%;
           gap: 10px;
@@ -127,16 +142,17 @@
           align-items: center;
           height: 20%;
           margin-top: 2rem;
-          input{
+          input {
             margin-bottom: 10px;
+           
           }
-          p{
-font-size: 14px;
-display: inline-block;
-span{
-  color: #5439ed;
-  font-weight: bold;
-}
+          p {
+            font-size: 14px;
+            display: inline-block;
+            span {
+              color: #5439ed;
+              font-weight: bold;
+            }
           }
         }
         .btn-container {
@@ -147,7 +163,7 @@ span{
           margin-top: 1rem;
           button {
             width: 40%;
-            background: #EA4B8B;
+            background: #ea4b8b;
             border-radius: 10px;
             font-size: 14px;
             font-weight: bold;
@@ -159,21 +175,18 @@ span{
         }
       }
     }
-    
-     .note{
+
+    .note {
       width: 60%;
       margin-top: 1rem;
-     #noted{
-
-       font-size: 11px;
-       display: block;
-       span{
-         color: #5439ed;
-         font-weight: bold;
-       }
-     }
-     
-     }
+      #noted {
+        font-size: 11px;
+        display: block;
+        span {
+          color: #5439ed;
+          font-weight: bold;
+        }
+      }
+    }
   }
- 
 }

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import {Routes,Route} from "react-router-dom"
 import Auth from "./components/Authentication/Auth"
@@ -13,7 +13,6 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/next" element={<NextPage />} />
       <Route path="/homepage" element={<HomePage />} />
-
       </Routes>
     </div>
   );
