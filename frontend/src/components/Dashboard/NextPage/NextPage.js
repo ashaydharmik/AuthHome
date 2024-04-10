@@ -28,10 +28,10 @@ const NextPage = () => {
       ...prevState,
       [option]: !prevState[option],
     }), () => {
-      checkFormReady(); // Update isReady state immediately after updating checkedOptions state
+      checkFormReady(); 
     });
     
-    setIsReady(true); // Set isReady to true whenever a checkbox is checked
+    setIsReady(true); 
   };
   
   
